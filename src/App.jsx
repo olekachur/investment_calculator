@@ -6,7 +6,6 @@ import { calculateInvestmentResults, formatter } from "./util/investment";
 
 function App() {
   return (<>
-    <h1>React Investment Calculator</h1>
     <Header />
     <UserInput />
     <ResultTable />
