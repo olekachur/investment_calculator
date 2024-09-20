@@ -1,38 +1,62 @@
+import { useState } from "react";
+
 export default function UserInput() {
+    const [input, setInput] = useState({
+        initialInvestment: '',
+        annualInvestment: '',
+        expectedReturn: '',
+        duration: '',
+    });
+
+    function handleInputChange(inputIdentiffier, newValue) {
+        setInput(prevInput => {
+            return {
+                ...prevInput,
+                [inputIdentiffier]: newValue,
+            }
+        })
+        console.log(input);
+        console.log(inputIdentiffier, newValue);
+    }
+
     return <section id="user-input">
         <div className="input-group">
             <p>
-                <label htmlFor="input1">Initial investments</label>
+                <label>Initial investments</label>
                 <input
                     type="number"
-                    id="input1"
                     required
+                    onChange={(e) => handleInputChange('initialInvestment', e.target.value)}
+                    value={input.initialInvestment}
                 />
             </p>
             <p>
-                <label htmlFor="expected_retrun">Expected retrun</label>
+                <label>Expected retrun</label>
                 <input
                     type="number"
-                    id="input2"
                     required
+                    onChange={(e) => handleInputChange('expectedReturn', e.target.value)}
+                    value={input.expectedReturn}
                 />
             </p>
         </div>
         <div className="input-group">
             <p>
-                <label htmlFor="anual_investment">Annual investment</label>
+                <label>Annual investment</label>
                 <input
                     type="number"
-                    id="input3"
                     required
+                    onChange={(e) => handleInputChange('annualInvestment', e.target.value)}
+                    value={input.annualInvestment}
                 />
             </p>
             <p>
-                <label htmlFor="duration">Duration</label>
+                <label>Duration</label>
                 <input
                     type="number"
-                    id="input4"
                     required
+                    onChange={(e) => handleInputChange('duration', e.target.value)}
+                    value={input.duration}
                 />
             </p>
         </div>
