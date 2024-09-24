@@ -1,6 +1,9 @@
-import { formatter } from "../util/investment";
+import { calculateInvestmentResults, formatter } from "../util/investment";
+
 
 export default function ResultTable({ investmentResult }) {
+    const results = calculateInvestmentResults(investmentResult);
+
     return (
         <table id="result">
             <thead>
@@ -13,7 +16,7 @@ export default function ResultTable({ investmentResult }) {
                 </tr>
             </thead>
             <tbody>
-                {investmentResult.map((result) => (
+                {results.map((result) => (
                     <tr className="center" key={result.year}>
                         <th>{result.year}</th>
                         <th>{formatter.format(result.valueEndOfYear)}</th>
